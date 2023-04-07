@@ -20,7 +20,7 @@ crash.*.log
 *.tfvars.json
 
 *.pem
-providers.tf
+*providers.tf
 
 *.txt
 
