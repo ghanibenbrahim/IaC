@@ -1,5 +1,5 @@
 resource "flexibleengine_compute_keypair_v2" "CV_keypair" {
-  name = "CV_keypair"
+  name = "CV_keypair_2"
 }
 
 resource "flexibleengine_vpc_eip" "CV_eip" {
@@ -23,12 +23,13 @@ resource "flexibleengine_compute_instance_v2" "CV_VM" {
   availability_zone = var.availability_zone
   flavor_id       = "s6.2xlarge.2"
   key_pair        = flexibleengine_compute_keypair_v2.CV_keypair.name
-  security_groups = [flexibleengine_networking_secgroup_v2.nsg.name]
+  security_groups = [flexibleengine_networking_secgroup_v2.nsg.id]
   #security_groups = [data.flexibleengine_networking_secgroup_v2.nsg_test.name]
 
 
   network {
-    uuid = flexibleengine_vpc_subnet_v1.CV_subnet.id
+    uuid = data.flexibleengine_vpc_subnet_v1.vpc.id
+    
   }
 
   tags = {
@@ -37,24 +38,27 @@ resource "flexibleengine_compute_instance_v2" "CV_VM" {
 
   /*connection {
   type        = "ssh"
-  host        = flexibleengine_compute_instance_v2.CV_VM.public_ip
-  user        = "ubuntu"
+  host        = flexibleengine_vpc_eip.CV_eip.address
+  #user        = "ubuntu"
   password    = "your_ssh_password"
   timeout     = "2m"
-  agent       = false
-  private_key = file("C:\\path\\to\\your\\private\\key\\file")
-  allow_host_key_verification = false
+  agent       = false 
+  private_key = file("./${flexibleengine_compute_keypair_v2.CV_keypair.name}.pem")
+  
+  #allow_host_key_verification = false
 }
 
   provisioner "remote-exec" {
     inline = [
-    #Docker installation 
-      "sudo apt-get update",
-      "sudo apt-get install ca-certificates curl gnupg",
-      "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin",
-      "sudo apt-get install -y git"
+    #Apache installation 
+      "apt-get update",
+      "apt-get install -y apache2",
+      "systemctl start apache2"
     ]
   } */
+
+
+
   depends_on = [
     flexibleengine_compute_keypair_v2.CV_keypair,
     flexibleengine_networking_secgroup_v2.nsg,
