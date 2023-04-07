@@ -5,6 +5,7 @@ provider "registry.terraform.io/flexibleenginecloud/flexibleengine" {
   version     = "1.36.0"
   constraints = "1.36.0"
   hashes = [
+    "h1:HPCYnBTOrYx5js5KvilYxFq8sxDXnuORqlHKCvkhLnc=",
     "h1:zQd0Kp+mKwNqrMWsQ30LL4hz9bGlkE4B1uGib7NLd0Y=",
     "zh:001a21687bd3ac03d556f10a163d9202399c078bad76150924b2d82524c2e72e",
     "zh:105744801904f9e4c72c3111cfd1f15bddd113b1beb9fe4ab0d1063ff39ce6c9",
@@ -26,6 +27,7 @@ provider "registry.terraform.io/flexibleenginecloud/flexibleengine" {
 provider "registry.terraform.io/hashicorp/null" {
   version = "3.2.1"
   hashes = [
+    "h1:FbGfc+muBsC17Ohy5g806iuI1hQc4SIexpYCrQHQd8w=",
     "h1:vUW21lLLsKlxtBf0QF7LKJreKxs0CM7YXGzqW1N/ODY=",
     "zh:58ed64389620cc7b82f01332e27723856422820cfd302e304b5f6c3436fb9840",
     "zh:62a5cc82c3b2ddef7ef3a6f2fedb7b9b3deff4ab7b414938b08e51d6e8be87cb",
