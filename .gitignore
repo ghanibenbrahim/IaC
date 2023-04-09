@@ -22,7 +22,11 @@ crash.*.log
 *.pem
 *providers.tf
 
+/providers.tf
+
 *.txt
+
+/*providers.tf
 
 
 # Ignore override files as they are usually used to override resources locally and so
