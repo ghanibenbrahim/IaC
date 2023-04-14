@@ -57,8 +57,6 @@ resource "flexibleengine_compute_instance_v2" "CV_VM" {
     ]
   } */
 
-
-
   depends_on = [
     flexibleengine_compute_keypair_v2.CV_keypair,
     flexibleengine_networking_secgroup_v2.nsg,

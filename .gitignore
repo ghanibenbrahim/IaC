@@ -22,7 +22,7 @@ crash.*.log
 *.pem
 *providers.tf
 
-/providers.tf
+providers.tf
 
 *.txt
 
