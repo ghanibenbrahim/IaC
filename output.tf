@@ -14,5 +14,4 @@ output "nsg" {
 
 output "virtual_network" {
     value = flexibleengine_vpc_subnet_v1.CV_subnet.id
-  
 }

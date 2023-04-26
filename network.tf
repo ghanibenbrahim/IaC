@@ -2,8 +2,6 @@ resource "flexibleengine_vpc_v1" "CV_vpc" {
   name = "VPC_CV_2"
   cidr = "192.168.0.0/16"
   #region = var.location
-  
-
 }
 
 resource "flexibleengine_vpc_subnet_v1" "CV_subnet" {
@@ -18,8 +16,6 @@ resource "flexibleengine_vpc_subnet_v1" "CV_subnet" {
 
   ]
 }
-
-
 
 
 
