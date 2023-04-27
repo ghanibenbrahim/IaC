@@ -1,39 +1,38 @@
 resource "flexibleengine_compute_keypair_v2" "CV_keypair" {
-  name = "CV_keypair_2"
+  name = var.key_pair_name
 }
 
 resource "flexibleengine_vpc_eip" "CV_eip" {
   publicip {
-    type = "5_bgp"
+    type = var.eip_type
   }
   bandwidth {
-    name = "CV_eip"
-    size = 10
-    share_type = "PER"
-    
+    name       = var.eip_name
+    size       = var.eip_bandwidth_size
+    share_type = var.eip_share_type
   }
 }
 
 
 
 resource "flexibleengine_compute_instance_v2" "CV_VM" {
-  name            = "CV_VM"
-  image_id        = "6ab649f9-d0b8-4e4f-aac8-a5d0a3fed1c9"
-  region = var.location
+  name              = var.ecs_name
+  image_id          = var.ecs_image_id
+  region            = var.location
   availability_zone = var.availability_zone
-  flavor_id       = "s6.2xlarge.2"
-  key_pair        = flexibleengine_compute_keypair_v2.CV_keypair.name
-  security_groups = [flexibleengine_networking_secgroup_v2.nsg.id]
+  flavor_id         = var.flavor_id
+  key_pair          = flexibleengine_compute_keypair_v2.CV_keypair.name
+  security_groups   = [flexibleengine_networking_secgroup_v2.nsg.id]
   #security_groups = [data.flexibleengine_networking_secgroup_v2.nsg_test.name]
 
 
   network {
     uuid = data.flexibleengine_vpc_subnet_v1.vpc.id
-    
+
   }
 
   tags = {
-    
+
   }
 
   /*connection {

@@ -100,7 +100,8 @@ resource "null_resource" "remote_exec" {
       // AWX instance 
       "cp ../pvc.yaml ../awx_dep.yaml .", 
       "kubectl create -f pvc.yaml",
-      "kubectl apply -f awx_dep.yaml"
+      "kubectl apply -f awx_dep.yaml", 
+      ""
 
     ]
     connection {
